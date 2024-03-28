@@ -1,4 +1,12 @@
-# React + Vite
+# React Organizer App
+
+## Dependencies 
+
+These are some of the libraries I'm using for this project: 
+
+```
+npm install formik --save
+```
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
