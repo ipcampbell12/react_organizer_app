@@ -1,5 +1,4 @@
 import * as React from 'react';
-import SearchComponent from './Search';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -17,8 +16,13 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+
+
+//Components 
 import CustomAppBar from './CustomAppBar';
-import BasicTabs from './Tabs';
+import AddButton from './AddButton';
+import SearchComponent from './Search';
+import TaskModal from '../Form/UiModal';
 
 //Icons 
 import TodayIcon from '@mui/icons-material/Today';
@@ -81,14 +85,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 export default function PersistentDrawerLeft() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    // const [anchorElUser, setAnchorElUser] = React.useState(null);
+    const [modalShow, setModalShow] = React.useState(false);
+    const handleModalOpen = () => setModalShow(true);
+    const handleModalClose = () => setModalShow(false);
 
-    // const handleOpenNavMenu = (event) => {
-    //     setAnchorElNav(event.currentTarget);
-    // };
-    // const handleOpenUserMenu = (event) => {
-    //     setAnchorElUser(event.currentTarget);
-    // };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
@@ -109,9 +109,9 @@ export default function PersistentDrawerLeft() {
     };
 
     return (
-        <Box sx={{ display: 'flex' }}>
+        <Box>
             <CssBaseline />
-            <BasicTabs />
+
             <AppBar position="fixed" open={open}>
 
                 <Toolbar>
@@ -146,9 +146,11 @@ export default function PersistentDrawerLeft() {
 
                     </Menu>
                     <CustomAppBar />
+                    <AddButton key={3} sx={{ ml: 6 }} show={modalShow} onOpen={handleModalOpen} />
                     <SearchComponent />
                 </Toolbar>
             </AppBar>
+            <TaskModal handleClose={handleModalClose} show={modalShow} />
             <Drawer
                 sx={{
                     width: drawerWidth,
