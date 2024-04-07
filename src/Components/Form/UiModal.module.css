@@ -6,4 +6,11 @@
 .top-menus {
     display: flex;
     justify-content: center;
+    border: 3rem;
+    padding: 3rem;
+}
+
+.menu {
+    border: 3rem;
+    padding: 3rem;
 }

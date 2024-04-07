@@ -29,6 +29,7 @@ export default function UiModal({ show, handleClose, }) {
     const [type, setType] = React.useState('');
     const typeOptions = ["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"];
     const labels = ["Work/Home", "When", "Type"]
+
     const handleChange = (event, setter) => {
         setter(event.target.value);
     };
@@ -45,9 +46,9 @@ export default function UiModal({ show, handleClose, }) {
 
             <Box sx={style} className={classes["container"]}>
                 <div className={classes["top-menus"]}>
-                    <SelectMenu choice={workHome} handleChange={() => handleChange(setWorkhome)} options={workHomeOptions} label={labels[0]} />
-                    <SelectMenu choice={when} handleChange={() => handleChange(setWhen)} options={whenOptions} label={labels[1]} />
-                    <SelectMenu choice={type} handleChange={() => handleChange(setType)} options={typeOptions} label={labels[2]} />
+                    <SelectMenu choice={workHome} handleChange={() => handleChange(setWorkhome)} options={workHomeOptions} label={labels[0]} className={classes["menu"]} />
+                    <SelectMenu choice={when} handleChange={() => handleChange(setWhen)} options={whenOptions} label={labels[1]} className={classes["menu"]} />
+                    <SelectMenu choice={type} handleChange={() => handleChange(setType)} options={typeOptions} label={labels[2]} className={classes["menu"]} />
                 </div>
 
             </Box>

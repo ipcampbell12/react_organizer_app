@@ -54,9 +54,7 @@ export default function BasicTabs() {
         <Box sx={{ width: '100%' }}>
             <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    {tabNames.map((tab, index) => {
-                        { <Tab label={tab} {...a11yProps(index)} /> }
-                    })}
+                    {["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"].map((tab, index) => <Tab label={tab} key={index} {...a11yProps(index)} />)}
 
                 </Tabs>
             </Box>

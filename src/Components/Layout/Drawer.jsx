@@ -16,6 +16,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Tabs from './Tabs';
+
 
 
 //Components 
@@ -151,6 +153,7 @@ export default function PersistentDrawerLeft() {
                 </Toolbar>
             </AppBar>
             <TaskModal handleClose={handleModalClose} show={modalShow} />
+            <Tabs />
             <Drawer
                 sx={{
                     width: drawerWidth,

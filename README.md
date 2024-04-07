@@ -35,3 +35,20 @@ Currently, two official plugins are available:
 - [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
 
+### Issues I'm trying to figure out
+
+1) I can't get my props to render with the MAP method
+
+Make sure you are writing your Map method expression correclty
+
+This is what I had: 
+
+
+![alt text](image.png)
+
+This is what I needed: 
+
+![alt text](image-1.png)
+
+The extra pair of curly braces around the tab element caused the interpreter to think that I was trying to embed JS code instead of JSx.
+
