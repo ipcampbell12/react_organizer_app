@@ -20,6 +20,7 @@ const Input = React.forwardRef(function CustomInput(props, ref) {
 export default function TextAreaComponent({ placeholder, label }) {
     return (
         <React.Fragment>
+            <br />
             <InputLabel id="demo-simple-select-label">{label}</InputLabel>
             <Input aria-label="Demo input" multiline placeholder={placeholder} />
         </React.Fragment>);

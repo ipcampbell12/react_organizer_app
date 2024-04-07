@@ -6,6 +6,7 @@ import SelectMenu from './SelectMenu';
 import InputComponent from '../UI/InputComponent'
 import TextAreaComponent from '../UI/TextAreaComponent';
 import Typography from '@mui/material/Typography';
+import Slider from '../UI/SliderComponent'
 
 const style = {
     position: 'absolute',
@@ -59,8 +60,14 @@ export default function UiModal({ show, handleClose, }) {
                     <SelectMenu choice={frequency} handleChange={() => handleChange(setFrequency)} options={frequencyOptions} label={labels[3]} />
                 </div>
                 <div className={classes["lower-div"]}>
+                    <br />
                     <InputComponent placeholder={"Enter task name"} label={"Task name"} />
+                    <br />
                     <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} />
+                    <br />
+                    <Slider label={"Send Email reminder"} />
+                    <br />
+                    <Slider label={"Create Calendar Event"} />
                 </div>
 
             </Box>
