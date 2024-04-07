@@ -20,9 +20,7 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
                     onChange={handleChange}
                 >
                     {
-                        options.map((option, index) => {
-                            <MenuItem value={option} key={index}>{option}</MenuItem>
-                        })
+                        options.map((option, index) => <MenuItem value={option} key={index}>{option}</MenuItem>)
                     }
 
 
