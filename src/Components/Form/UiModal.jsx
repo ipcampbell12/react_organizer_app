@@ -3,8 +3,9 @@ import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import classes from './UiModal.module.css';
 import SelectMenu from './SelectMenu';
-
-
+import InputComponent from '../UI/InputComponent'
+import TextAreaComponent from '../UI/TextAreaComponent';
+import Typography from '@mui/material/Typography';
 
 const style = {
     position: 'absolute',
@@ -14,7 +15,6 @@ const style = {
     width: 800,
     height: 700,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
@@ -28,7 +28,9 @@ export default function UiModal({ show, handleClose, }) {
     const whenOptions = ['Today', 'This Week', 'This Month', 'Later', 'Someday Maybe'];
     const [type, setType] = React.useState('');
     const typeOptions = ["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"];
-    const labels = ["Work/Home", "When", "Type"]
+    const labels = ["Work/Home", "When", "Type", "Frequency"]
+    const [frequency, setFrequency] = React.useState('');
+    const frequencyOptions = ["Daily", "Weekly", "Monthly", "Yearly", "Custom"];
 
     const handleChange = (event, setter) => {
         setter(event.target.value);
@@ -45,13 +47,24 @@ export default function UiModal({ show, handleClose, }) {
         >
 
             <Box sx={style} className={classes["container"]}>
-                <div className={classes["top-menus"]}>
-                    <SelectMenu choice={workHome} handleChange={() => handleChange(setWorkhome)} options={workHomeOptions} label={labels[0]} className={classes["menu"]} />
-                    <SelectMenu choice={when} handleChange={() => handleChange(setWhen)} options={whenOptions} label={labels[1]} className={classes["menu"]} />
-                    <SelectMenu choice={type} handleChange={() => handleChange(setType)} options={typeOptions} label={labels[2]} className={classes["menu"]} />
+                <Typography variant="h3" component="div" sx={{ textAlign: "center" }}>
+                    Add New Task
+                </Typography>
+                <div className={classes["top-div"]}>
+                    <SelectMenu choice={workHome} handleChange={() => handleChange(setWorkhome)} options={workHomeOptions} label={labels[0]} className={classes["individual-menu"]} />
+                    <SelectMenu choice={when} handleChange={() => handleChange(setWhen)} options={whenOptions} label={labels[1]} className={classes["individual-menu"]} />
+                    <SelectMenu choice={type} handleChange={() => handleChange(setType)} options={typeOptions} label={labels[2]} className={classes["individual-menu"]} />
+                </div>
+                <div className={classes["middle-div"]}>
+                    <SelectMenu choice={frequency} handleChange={() => handleChange(setFrequency)} options={frequencyOptions} label={labels[3]} />
+                </div>
+                <div className={classes["lower-div"]}>
+                    <InputComponent placeholder={"Enter task name"} label={"Task name"} />
+                    <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} />
                 </div>
 
             </Box>
+
         </Modal>
 
     );

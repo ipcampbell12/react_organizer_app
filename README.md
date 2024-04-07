@@ -50,5 +50,5 @@ This is what I needed:
 
 ![alt text](image-1.png)
 
-The extra pair of curly braces around the tab element caused the interpreter to think that I was trying to embed JS code instead of JSx.
+Basic JS: If you have curly braces, you need a return statement. Or you can omit the curly braces completely. But if you have curly braces, you need to have a return statement, or it is like a function that doesn't return anything (and doesn't render anything on the page)
 

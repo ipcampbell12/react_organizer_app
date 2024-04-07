@@ -5,6 +5,7 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
+
 export default function SelectMenu({ choice, handleChange, options, label }) {
     console.log(label)
     console.log(options)
@@ -16,7 +17,7 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={choice}
-                    label="Age"
+                    label={label}
                     onChange={handleChange}
                 >
                     {
