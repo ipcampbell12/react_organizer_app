@@ -16,15 +16,17 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import Tabs from './Tabs';
+
+import getOptions from '../../options';
 
 
 
 //Components 
+import Tabs from './Tabs';
 import CustomAppBar from './CustomAppBar';
 import AddButton from './AddButton';
 import SearchComponent from './Search';
-import TaskModal from '../Form/UiModal';
+import TaskForm from '../Form/TaskForm';
 
 //Icons 
 import TodayIcon from '@mui/icons-material/Today';
@@ -35,7 +37,7 @@ import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
 
 const icons = [<TodayIcon key={0} />, <CalendarViewWeekIcon key={1} />, <CalendarMonthIcon key={2} />, <DeviceUnknownIcon key={3} />, <PsychologyAltIcon key={4} />]
 
-
+const options = getOptions()
 
 const drawerWidth = 240;
 
@@ -152,7 +154,7 @@ export default function PersistentDrawerLeft() {
                     <SearchComponent />
                 </Toolbar>
             </AppBar>
-            <TaskModal handleClose={handleModalClose} show={modalShow} />
+            <TaskForm handleClose={handleModalClose} show={modalShow} />
             <Tabs />
             <Drawer
                 sx={{
@@ -174,7 +176,7 @@ export default function PersistentDrawerLeft() {
                 </DrawerHeader>
                 <Divider />
                 <List>
-                    {['Today', 'This Week', 'This Month', 'Later', 'Someday Maybe'].map((text, index) => (
+                    {options.whenOptions.map((text, index) => (
                         <ListItem key={text} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>

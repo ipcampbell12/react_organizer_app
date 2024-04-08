@@ -5,8 +5,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
+import getOptions from '../../options';
 
-const tabNames = ["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"];
+const options = getOptions();
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -33,7 +34,7 @@ CustomTabPanel.propTypes = {
     children: PropTypes.node,
     index: PropTypes.number.isRequired,
     value: PropTypes.number.isRequired,
-    tabNames: tabNames
+    tabNames: options.typeOptions
 };
 
 function a11yProps(index) {
