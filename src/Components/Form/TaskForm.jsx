@@ -1,5 +1,5 @@
 import * as React from 'react';
-import classes from './UiModal.module.css';
+//import classes from './UiModal.module.css';
 import SelectMenu from './SelectMenu';
 import InputComponent from '../UI/InputComponent'
 import TextAreaComponent from '../UI/TextAreaComponent';
@@ -44,24 +44,27 @@ export default function TaskForm({ show, handleClose }) {
     const header = "Add New Task";
 
     const modalContent = (
-        <React.Fragment>
-            <div className={classes["top-div"]}>
+        <div className="flex flex-col justify-center border-2 p-4 rounded-lg bg-yellow-50">
+            <div className="flex justify-center">
+                <h1 className="border-2 p-2 rounded-lg bg-green-50 text-center w-2/5">Add A Task</h1>
+            </div>
+            <div className="flex">
                 {selectionMenus.map((menu, index) => {
                     return (
-                        <SelectMenu choice={statesArray[index]} handleChange={() => handleChange(setterArray[index])} options={menu} label={options.labels[index]} className={classes["individual-menu"]} key={index} />
+                        <SelectMenu choice={statesArray[index]} handleChange={() => handleChange(setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
                     )
                 })}
             </div>
-            <div className={classes["middle-div"]}>
+            <div>
                 <SelectMenu choice={frequency} handleChange={() => handleChange(setFrequency)} options={options.frequencyOptions} label={options.labels[3]} />
             </div>
-            <div className={classes["lower-div"]}>
-                <InputComponent placeholder={"Enter task name"} label={"Task name"} />
-                <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} />∂
+            <div className="flex flex-col">
+                <InputComponent placeholder={"Enter task name"} label={"Task name"} className="m-1 p-1 rounded-lg" />
+                <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} className="m-1 border-2 p-1 rounded-lg" />∂
                 <Slider label={"Send Email reminder"} />
                 <Slider label={"Create Calendar Event"} />
             </div>
-        </React.Fragment>
+        </div>
     )
 
 
