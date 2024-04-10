@@ -10,7 +10,7 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
     console.log(label)
     console.log(options)
     return (
-        <Box sx={{ minWidth: 120 }}>
+        <div className="w-1/3 bg-white m-2">
             <FormControl fullWidth>
                 <InputLabel id="demo-simple-select-label">{label}</InputLabel>
                 <Select
@@ -27,6 +27,6 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
 
                 </Select>
             </FormControl>
-        </Box>
+        </div>
     );
 }

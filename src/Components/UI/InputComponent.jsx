@@ -10,9 +10,8 @@ const Input = React.forwardRef(function CustomInput(props, ref) {
 export default function InputComponent({ placeholder, label }) {
   return (
     <React.Fragment>
-      <br />
-      <InputLabel id="demo-simple-select-label">{label}</InputLabel>
-      <Input aria-label="Demo input" placeholder={placeholder} />;
+      <InputLabel id="demo-simple-select-label" className="m-2 p-2">{label}</InputLabel>
+      <Input aria-label="Demo input" placeholder={placeholder} />
     </React.Fragment>);
 }
 

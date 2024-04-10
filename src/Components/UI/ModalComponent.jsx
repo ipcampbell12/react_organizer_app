@@ -2,6 +2,7 @@ import * as React from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import { BorderAllRounded } from '@mui/icons-material';
 
 const style = {
     position: 'absolute',
@@ -12,6 +13,7 @@ const style = {
     height: 700,
     bgcolor: 'background.paper',
     boxShadow: 24,
+    BorderAllRounded: true,
     p: 4,
 };
 
@@ -26,7 +28,9 @@ function ModalComponent({ show, handleClose, headerVariant, header, modalContent
         >
             <Box sx={style}>
                 <Typography variant={headerVariant} component="div" sx={{ textAlign: "center" }}>
-                    {header}
+                    <div className="flex justify-center">
+                        <h1 className="border-2 p-2 m-2 rounded-lg bg-green-50 text-center w-2/5">{header}</h1>
+                    </div>
                 </Typography>
                 {modalContent}
 
