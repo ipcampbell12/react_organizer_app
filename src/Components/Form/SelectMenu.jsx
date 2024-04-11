@@ -7,8 +7,9 @@ import Select from '@mui/material/Select';
 
 
 export default function SelectMenu({ choice, handleChange, options, label }) {
-    console.log(label)
-    console.log(options)
+    // console.log(label)
+    // console.log(options)
+    console.log(choice)
     return (
         <div className="w-1/3 bg-white m-2">
             <FormControl fullWidth>
@@ -16,6 +17,7 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
+                    defaultValue="Select an options"
                     value={choice}
                     label={label}
                     onChange={handleChange}

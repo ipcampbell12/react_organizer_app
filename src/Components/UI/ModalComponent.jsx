@@ -19,7 +19,7 @@ const style = {
 };
 
 function ModalComponent({ show, handleClose, headerVariant, header, modalContent, buttonArr }) {
-    console.log(buttonArr)
+    // console.log(buttonArr)
     return (
         <Modal
             open={show}

@@ -35,7 +35,7 @@ export default function TaskForm({ show, handleClose }) {
     const options = getOptions();
     const selectionMenus = [options.whenOptions, options.whenOptions, options.typeOptions]
     const statesArray = [workHome, when, type];
-    const setterArray = [setWorkhome, setWhen, setType];
+    const setterArray = [setWorkhome, setWhen, setType, setFrequency];
     const buttons = ["Cancel", "Add Task"];
 
     const handleChange = (event, setter) => {
@@ -44,18 +44,18 @@ export default function TaskForm({ show, handleClose }) {
 
     const header = "Add New Task";
 
-    console.log(buttons)
+    // console.log(buttons)
     const modalContent = (
         <div className="flex flex-col justify-center border-2 p-4 rounded-lg bg-yellow-50">
             <div className="flex">
                 {selectionMenus.map((menu, index) => {
                     return (
-                        <SelectMenu choice={statesArray[index]} onChange={() => handleChange(setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
+                        <SelectMenu choice={statesArray[index]} handleChange={(e) => handleChange(e, setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
                     )
                 })}
             </div>
             <div>
-                <SelectMenu choice={frequency} handleChange={() => handleChange(setFrequency)} options={options.frequencyOptions} label={options.labels[3]} />
+                {frequency === "Repeated Tasks" ? <SelectMenu choice={frequency} handleChange={(e) => handleChange(e, setterArray[3])} options={options.frequencyOptions} label={options.labels[3]} /> : ''}
             </div>
             <div className="flex flex-col">
                 <InputComponent placeholder={"Enter task name"} label={"Task name"} className="m-1 p-1 rounded-lg" />
