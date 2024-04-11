@@ -35,7 +35,8 @@ export default function TaskForm({ show, handleClose }) {
     const options = getOptions();
     const selectionMenus = [options.whenOptions, options.whenOptions, options.typeOptions]
     const statesArray = [workHome, when, type];
-    const setterArray = [setWorkhome, setWhen, setType]
+    const setterArray = [setWorkhome, setWhen, setType];
+    const buttons = ["Cancel", "Add Task"];
 
     const handleChange = (event, setter) => {
         setter(event.target.value);
@@ -43,6 +44,7 @@ export default function TaskForm({ show, handleClose }) {
 
     const header = "Add New Task";
 
+    console.log(buttons)
     const modalContent = (
         <div className="flex flex-col justify-center border-2 p-4 rounded-lg bg-yellow-50">
             <div className="flex">
@@ -67,7 +69,7 @@ export default function TaskForm({ show, handleClose }) {
 
     return (
 
-        <ModalComponent show={show} handleClose={handleClose} header={header} modalContent={modalContent} />
+        <ModalComponent show={show} handleClose={handleClose} header={header} modalContent={modalContent} buttonArr={buttons} />
 
     );
 }

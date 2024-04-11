@@ -2,7 +2,8 @@ import * as React from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-import { BorderAllRounded } from '@mui/icons-material';
+import ButtonSet from './ButtonComponent';
+
 
 const style = {
     position: 'absolute',
@@ -13,11 +14,12 @@ const style = {
     height: 700,
     bgcolor: 'background.paper',
     boxShadow: 24,
-    BorderAllRounded: true,
+    borderRadius: '3%',
     p: 4,
 };
 
-function ModalComponent({ show, handleClose, headerVariant, header, modalContent }) {
+function ModalComponent({ show, handleClose, headerVariant, header, modalContent, buttonArr }) {
+    console.log(buttonArr)
     return (
         <Modal
             open={show}
@@ -33,8 +35,9 @@ function ModalComponent({ show, handleClose, headerVariant, header, modalContent
                     </div>
                 </Typography>
                 {modalContent}
-
+                <ButtonSet buttonArr={buttonArr} />
             </Box>
+
 
         </Modal>
     );
