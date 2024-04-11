@@ -50,7 +50,7 @@ export default function TaskForm({ show, handleClose }) {
             <div className="flex">
                 {selectionMenus.map((menu, index) => {
                     return (
-                        <SelectMenu choice={statesArray[index]} handleChange={() => handleChange(setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
+                        <SelectMenu choice={statesArray[index]} onChange={() => handleChange(setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
                     )
                 })}
             </div>

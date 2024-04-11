@@ -35,7 +35,10 @@ function ModalComponent({ show, handleClose, headerVariant, header, modalContent
                     </div>
                 </Typography>
                 {modalContent}
-                <ButtonSet buttonArr={buttonArr} />
+                <div className="p-2 m-2 flex justify-center">
+                    <ButtonSet buttonArr={buttonArr} handleClose={handleClose} />
+                </div>
+
             </Box>
 
 
