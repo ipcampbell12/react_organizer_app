@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, useEffect } from 'react';
 //import classes from './UiModal.module.css';
 import SelectMenu from './SelectMenu';
 import InputComponent from '../UI/InputComponent'
@@ -24,38 +24,49 @@ const style = {
 export default function TaskForm({ show, handleClose }) {
 
     //States
-    const [workHome, setWorkhome] = React.useState('');
-    const [when, setWhen] = React.useState('');
-    const [type, setType] = React.useState('')
-    const [frequency, setFrequency] = React.useState('');
-    const [emailReminder, setEmailReminder] = React.useState(false);
-    const [calEvent, setCalEvent] = React.useState(false);
+    const [workHome, setWorkhome] = useState('');
+    const [when, setWhen] = useState('');
+    const [type, setType] = useState('')
+    const [frequency, setFrequency] = useState('');
+    const [emailReminder, setEmailReminder] = useState(false);
+    const [calEvent, setCalEvent] = useState(false);
+
+
 
     //Arrays
     const options = getOptions();
-    const selectionMenus = [options.whenOptions, options.whenOptions, options.typeOptions]
-    const statesArray = [workHome, when, type];
+    const selectionMenus = [options.workHomeOptions, options.whenOptions, options.typeOptions]
+    const statesArray = [workHome, when, type, frequency];
     const setterArray = [setWorkhome, setWhen, setType, setFrequency];
     const buttons = ["Cancel", "Add Task"];
 
-    const handleChange = (event, setter) => {
+    const handleSelectChange = (event, setter) => {
         setter(event.target.value);
     };
 
+    const resetSelectStates = () => {
+        setterArray.forEach(setter => setter(''));
+        console.log("The reset function has run")
+    }
+
     const header = "Add New Task";
 
+    useEffect(() => {
+        console.log("When is: ", type)
+    }, [type])
     // console.log(buttons)
     const modalContent = (
         <div className="flex flex-col justify-center border-2 p-4 rounded-lg bg-yellow-50">
             <div className="flex">
                 {selectionMenus.map((menu, index) => {
                     return (
-                        <SelectMenu choice={statesArray[index]} handleChange={(e) => handleChange(e, setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
+                        <SelectMenu choice={statesArray[index]} handleChange={(e) => handleSelectChange(e, setterArray[index])} options={menu} label={options.labels[index]} key={index} className="border-2 rounded-lg p-3 text-center" />
                     )
                 })}
             </div>
+            <br />
             <div>
-                {frequency === "Repeated Tasks" ? <SelectMenu choice={frequency} handleChange={(e) => handleChange(e, setterArray[3])} options={options.frequencyOptions} label={options.labels[3]} /> : ''}
+                {type === "Repeated Tasks" ? <SelectMenu choice={frequency} handleChange={(e) => handleSelectChange(e, setterArray[3])} options={options.frequencyOptions} label={options.labels[3]} /> : ''}
             </div>
             <div className="flex flex-col">
                 <InputComponent placeholder={"Enter task name"} label={"Task name"} className="m-1 p-1 rounded-lg" />
@@ -69,7 +80,7 @@ export default function TaskForm({ show, handleClose }) {
 
     return (
 
-        <ModalComponent show={show} handleClose={handleClose} header={header} modalContent={modalContent} buttonArr={buttons} />
+        <ModalComponent show={show} handleClose={handleClose} reset={resetSelectStates} header={header} modalContent={modalContent} buttonArr={buttons} />
 
     );
 }

@@ -17,7 +17,6 @@ export default function SelectMenu({ choice, handleChange, options, label }) {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    defaultValue="Select an options"
                     value={choice}
                     label={label}
                     onChange={handleChange}
