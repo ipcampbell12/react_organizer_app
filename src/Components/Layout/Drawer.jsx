@@ -22,7 +22,7 @@ import getOptions from '../../options';
 
 
 //Components 
-import Tabs from './Tabs';
+import BasicTabs from './Tabs';
 import CustomAppBar from './CustomAppBar';
 import AddButton from './AddButton';
 import SearchComponent from './Search';
@@ -98,9 +98,6 @@ export default function PersistentDrawerLeft() {
         setAnchorElNav(null);
     };
 
-    // const handleCloseUserMenu = () => {
-    //     setAnchorElUser(null);
-    // };
     const theme = useTheme();
     const [open, setOpen] = React.useState(false);
 
@@ -155,7 +152,7 @@ export default function PersistentDrawerLeft() {
                 </Toolbar>
             </AppBar>
             <TaskForm handleClose={handleModalClose} show={modalShow} />
-            <Tabs />
+
             <Drawer
                 sx={{
                     width: drawerWidth,
@@ -190,7 +187,12 @@ export default function PersistentDrawerLeft() {
             </Drawer>
             <Main open={open}>
                 <DrawerHeader />
+
             </Main>
+            <BasicTabs className="m3 justify-center" />
         </Box>
     );
 }
+
+
+// the tabs had been way over to the left because of the negative positioning in the main component
