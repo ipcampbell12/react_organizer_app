@@ -52,10 +52,10 @@ export default function BasicTabs() {
     };
 
     return (
-        <Box sx={{ width: '100%' }} className="flex justify-center">
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    {["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"].map((tab, index) => <Tab label={tab} key={index} {...a11yProps(index)} />)}
+        <Box sx={{ width: '100%' }} >
+            <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }} className="flex justify-center">
+                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className="flex justify-around">
+                    {["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"].map((tab, index) => <Tab label={tab} key={index} {...a11yProps(index)} className="font-semibold text-xl" />)}
 
                 </Tabs>
             </Box>
