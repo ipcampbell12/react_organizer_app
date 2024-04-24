@@ -6,6 +6,9 @@ import TextAreaComponent from '../UI/TextAreaComponent';
 import Slider from '../UI/SliderComponent'
 import getOptions from '../../options';
 import ModalComponent from '../UI/ModalComponent';
+import axios from 'axios';
+import { API_URL } from '../../config';
+
 
 
 const style = {
@@ -28,10 +31,45 @@ export default function TaskForm({ show, handleClose }) {
     const [when, setWhen] = useState('');
     const [type, setType] = useState('')
     const [frequency, setFrequency] = useState('');
+    const [title, setTitle] = useState('')
+    const [description, setDescription] = useState('');
     const [emailReminder, setEmailReminder] = useState(false);
     const [calEvent, setCalEvent] = useState(false);
 
+    const handleTitle = (e) => {
+        setTitle(e.target.value)
+    }
+    const handleDescription = (e) => {
+        setDescription(e.target.value)
+    }
+    const handleEmailReminder = (e) => {
+        setEmailReminder(e.target.value)
+    }
+    const handleCalEvent = (e) => {
+        setCalEvent(e.target.value)
+    }
 
+    const formData = {
+        workHome: workHome,
+        when: when,
+        type: type,
+        frequency: frequency,
+        title: title,
+        description: description,
+        emailReminder: emailReminder,
+        calEvent: calEvent
+
+    }
+
+    const onSubmit = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await axios.post(API_URL, formData);
+            console.log("Task created:", response.data);
+        } catch (error) {
+            console.error("Error creating task:", error);
+        }
+    }
 
     //Arrays
     const options = getOptions();
@@ -51,9 +89,7 @@ export default function TaskForm({ show, handleClose }) {
 
     const header = "Add New Task";
 
-    useEffect(() => {
-        console.log("When is: ", type)
-    }, [type])
+
     // console.log(buttons)
     const modalContent = (
         <div className="flex flex-col justify-center border-2 p-4 rounded-lg bg-yellow-50">
@@ -69,10 +105,10 @@ export default function TaskForm({ show, handleClose }) {
                 {type === "Repeated Tasks" ? <SelectMenu choice={frequency} handleChange={(e) => handleSelectChange(e, setterArray[3])} options={options.frequencyOptions} label={options.labels[3]} /> : ''}
             </div>
             <div className="flex flex-col">
-                <InputComponent placeholder={"Enter task name"} label={"Task name"} className="m-1 p-1 rounded-lg" />
-                <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} className="m-1 border-2 p-1 rounded-lg" />
-                <Slider label={"Send Email reminder"} />
-                <Slider label={"Create Calendar Event"} />
+                <InputComponent placeholder={"Enter task name"} label={"Task name"} className="m-1 p-1 rounded-lg" onTitle={handleTitle} />
+                <TextAreaComponent placeholder={"Enter task description"} label={"Task description"} onDescription={handleDescription} className="m-1 border-2 p-1 rounded-lg" />
+                <Slider label={"Send Email reminder"} onHandle={handleEmailReminder} />
+                <Slider label={"Create Calendar Event"} onHandle={handleCalEvent} />
             </div>
         </div>
     )

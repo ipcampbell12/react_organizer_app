@@ -17,11 +17,11 @@ const Input = React.forwardRef(function CustomInput(props, ref) {
   );
 });
 
-export default function TextAreaComponent({ placeholder, label }) {
+export default function TextAreaComponent({ placeholder, label, onDescription }) {
   return (
     <React.Fragment>
       <InputLabel id="demo-simple-select-label" className="m-2 p-2">{label}</InputLabel>
-      <Input aria-label="Demo input" multiline placeholder={placeholder} />
+      <Input aria-label="Demo input" multiline placeholder={placeholder} onChange={onDescription} />
     </React.Fragment>)
 }
 

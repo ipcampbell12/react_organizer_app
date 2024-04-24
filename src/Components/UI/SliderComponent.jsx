@@ -5,12 +5,12 @@ import { styled } from '@mui/system';
 import Switch from '@mui/material/Switch';
 
 
-export default function Slider({ label }) {
+export default function Slider({ label, onHandle }) {
 
   return (
     <div className="m-2 p-2">
       <FormGroup>
-        <FormControlLabel control={<Switch defaultChecked />} label={label} />
+        <FormControlLabel control={<Switch defaultChecked />} label={label} onChange={onHandle} />
       </FormGroup>
     </div>
   );
