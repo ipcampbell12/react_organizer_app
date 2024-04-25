@@ -50,21 +50,22 @@ export default function TaskForm({ show, handleClose }) {
     }
 
     const formData = {
+        title: title,
+        description: description,
         workHome: workHome,
         when: when,
         type: type,
         frequency: frequency,
-        title: title,
-        description: description,
-        emailReminder: emailReminder,
+        reminder: emailReminder,
         calEvent: calEvent
 
     }
 
     const onSubmit = async (e) => {
         e.preventDefault();
+        console.log("Data passed to form:", formData)
         try {
-            const response = await axios.post(API_URL, formData);
+            const response = await axios.post(`${API_URL}/api/tasks`, formData);
             console.log("Task created:", response.data);
         } catch (error) {
             console.error("Error creating task:", error);
@@ -84,6 +85,10 @@ export default function TaskForm({ show, handleClose }) {
 
     const resetSelectStates = () => {
         setterArray.forEach(setter => setter(''));
+        setTitle('')
+        setDescription('')
+        setEmailReminder(false);
+        setCalEvent(false);
         console.log("The reset function has run")
     }
 
@@ -116,7 +121,7 @@ export default function TaskForm({ show, handleClose }) {
 
     return (
 
-        <ModalComponent show={show} handleClose={handleClose} reset={resetSelectStates} header={header} modalContent={modalContent} buttonArr={buttons} />
+        <ModalComponent show={show} handleClose={handleClose} reset={resetSelectStates} header={header} modalContent={modalContent} buttonArr={buttons} onSubmit={onSubmit} />
 
     );
 }

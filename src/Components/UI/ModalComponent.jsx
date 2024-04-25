@@ -18,7 +18,7 @@ const style = {
     p: 4,
 };
 
-function ModalComponent({ show, handleClose, headerVariant, header, modalContent, buttonArr, reset }) {
+function ModalComponent({ show, handleClose, headerVariant, header, modalContent, buttonArr, reset, onSubmit }) {
     // console.log(buttonArr)
     return (
         <Modal
@@ -36,7 +36,7 @@ function ModalComponent({ show, handleClose, headerVariant, header, modalContent
                 </Typography>
                 {modalContent}
                 <div className="p-2 m-2 flex justify-center">
-                    <ButtonSet buttonArr={buttonArr} handleClose={handleClose} reset={reset} />
+                    <ButtonSet buttonArr={buttonArr} handleClose={handleClose} reset={reset} onSubmit={onSubmit} />
                 </div>
 
             </Box>
