@@ -34,6 +34,7 @@ import CalendarViewWeekIcon from '@mui/icons-material/CalendarViewWeek';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import DeviceUnknownIcon from '@mui/icons-material/DeviceUnknown';
 import PsychologyAltIcon from '@mui/icons-material/PsychologyAlt';
+import DataDisplay from './DataDisplay';
 
 const icons = [<TodayIcon key={0} />, <CalendarViewWeekIcon key={1} />, <CalendarMonthIcon key={2} />, <DeviceUnknownIcon key={3} />, <PsychologyAltIcon key={4} />]
 
@@ -190,6 +191,7 @@ export default function PersistentDrawerLeft() {
 
             </Main>
             <BasicTabs className="m3 justify-center" />
+            <DataDisplay />
         </Box>
     );
 }

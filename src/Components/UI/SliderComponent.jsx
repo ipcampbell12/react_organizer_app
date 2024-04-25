@@ -10,7 +10,7 @@ export default function Slider({ label, onHandle }) {
   return (
     <div className="m-2 p-2">
       <FormGroup>
-        <FormControlLabel control={<Switch defaultChecked />} label={label} onChange={onHandle} />
+        <FormControlLabel control={<Switch />} label={label} onChange={onHandle} />
       </FormGroup>
     </div>
   );
