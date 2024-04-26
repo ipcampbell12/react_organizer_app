@@ -24,7 +24,7 @@ const style = {
 };
 
 
-export default function TaskForm({ show, handleClose }) {
+export default function TaskForm({ show, handleClose, setTasks, tasks }) {
 
     //States
     const [workHome, setWorkhome] = useState('');
@@ -67,6 +67,7 @@ export default function TaskForm({ show, handleClose }) {
         try {
             const response = await axios.post(`${API_URL}/api/tasks`, formData);
             console.log("Task created:", response.data);
+            setTasks([...tasks, response.data])
         } catch (error) {
             console.error("Error creating task:", error);
         }

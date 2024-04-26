@@ -2,8 +2,8 @@ import { useEffect, useState } from 'react';
 import { API_URL } from '../../config';
 import axios from 'axios';
 
-function DataDisplay(props) {
-    const [tasks, setTasks] = useState([])
+function DataDisplay({ tasks, setTasks }) {
+
 
 
     useEffect(() => {
@@ -27,7 +27,7 @@ function DataDisplay(props) {
                 return <li key={i}>{task}</li>
             }
             )}
-        </ul >
+        </ul>
     );
 }
 

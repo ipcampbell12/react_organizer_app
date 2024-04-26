@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import { styled, useTheme } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
@@ -89,8 +89,10 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [modalShow, setModalShow] = React.useState(false);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [modalShow, setModalShow] = useState(false);
+    const [tasks, setTasks] = useState([])
+
     const handleModalOpen = () => setModalShow(true);
     const handleModalClose = () => setModalShow(false);
 
@@ -100,7 +102,7 @@ export default function PersistentDrawerLeft() {
     };
 
     const theme = useTheme();
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = useState(false);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -152,7 +154,7 @@ export default function PersistentDrawerLeft() {
                     <SearchComponent />
                 </Toolbar>
             </AppBar>
-            <TaskForm handleClose={handleModalClose} show={modalShow} />
+            <TaskForm handleClose={handleModalClose} show={modalShow} setTasks={setTasks} tasks={tasks} />
 
             <Drawer
                 sx={{
@@ -191,7 +193,7 @@ export default function PersistentDrawerLeft() {
 
             </Main>
             <BasicTabs className="m3 justify-center" />
-            <DataDisplay />
+            <DataDisplay tasks={tasks} setTasks={setTasks} />
         </Box>
     );
 }
