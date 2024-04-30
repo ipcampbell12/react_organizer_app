@@ -18,7 +18,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 
 import getOptions from '../../options';
-
+import { API_URL } from '../../config';
+import axios from 'axios';
 
 
 //Components 
@@ -38,7 +39,9 @@ import DataDisplay from './DataDisplay';
 
 const icons = [<TodayIcon key={0} />, <CalendarViewWeekIcon key={1} />, <CalendarMonthIcon key={2} />, <DeviceUnknownIcon key={3} />, <PsychologyAltIcon key={4} />]
 
-const options = getOptions()
+const options = getOptions();
+
+
 
 const drawerWidth = 240;
 
@@ -89,9 +92,21 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+    async function getTasks() {
+        try {
+            const response = await axios.get(`${API_URL}/api/tasks`)
+            console.log(response)
+            //have to use response.data
+            setTasks(response.data)
+        } catch (error) {
+            console.error(error)
+        }
+    }
+
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [modalShow, setModalShow] = useState(false);
     const [tasks, setTasks] = useState([])
+    const [tabState, setTabState] = useState('')
 
     const handleModalOpen = () => setModalShow(true);
     const handleModalClose = () => setModalShow(false);
@@ -192,8 +207,8 @@ export default function PersistentDrawerLeft() {
                 <DrawerHeader />
 
             </Main>
-            <BasicTabs className="m3 justify-center" />
-            <DataDisplay tasks={tasks} setTasks={setTasks} />
+            <BasicTabs className="m3 justify-center" onTab={setTabState} getTasks={getTasks} tabState={tabState} />
+            <DataDisplay tasks={tasks} getTasks={getTasks} setTasks={setTasks} tabState={tabState} />
         </Box>
     );
 }

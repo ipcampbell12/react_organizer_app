@@ -1,30 +1,21 @@
 import { useEffect, useState } from 'react';
 import { API_URL } from '../../config';
 import axios from 'axios';
+import CardComponent from '../UI/CardComponent';
 
-function DataDisplay({ tasks, setTasks }) {
+function DataDisplay({ tasks, setTasks, tabState, getTasks }) {
 
 
-
+    console.log("tab state in DataDisplay is: ", tabState)
     useEffect(() => {
-        async function getTasks() {
-            try {
-                const response = await axios.get(`${API_URL}/api/tasks`)
-                console.log(response)
-                //have to use response.data
-                setTasks(response.data)
-            } catch (error) {
-                console.error(error)
-            }
-        }
         getTasks()
-    }, [])
+    }, [tabState])
 
 
     return (
         <ul>
-            {tasks.map((task, i) => {
-                return <li key={i}>{task}</li>
+            {tasks.slice(1).filter(dataRow => dataRow[5] === tabState).map((task, i) => {
+                return <CardComponent key={i} task={task} />
             }
             )}
         </ul>

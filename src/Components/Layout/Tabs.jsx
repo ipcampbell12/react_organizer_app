@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
@@ -8,6 +8,7 @@ import Box from '@mui/material/Box';
 import getOptions from '../../options';
 
 const options = getOptions();
+const tabNames = ["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"]
 
 function CustomTabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -44,18 +45,24 @@ function a11yProps(index) {
     };
 }
 
-export default function BasicTabs() {
-    const [value, setValue] = React.useState(0);
+export default function BasicTabs({ onTab, getTasks, tabState }) {
+    const [value, setValue] = useState(0);
+
+    console.log("tab state in Tabs is: ", tabState)
+    useEffect(() => {
+        getTasks()
+    }, [tabState])
 
     const handleChange = (event, newValue) => {
-        setValue(newValue);
+        onTab(tabNames[newValue]);
+        setValue(newValue)
     };
 
     return (
         <Box sx={{ width: '100%' }} >
             <Box sx={{ borderBottom: 1, borderColor: 'divider', width: '100%' }} className="flex justify-center">
                 <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" className="flex justify-around">
-                    {["Repeated Tasks", "Other Tasks", "Projects", "Things to Buy", "People to Contact"].map((tab, index) => <Tab label={tab} key={index} {...a11yProps(index)} className="font-semibold text-xl" />)}
+                    {tabNames.map((tab, index) => <Tab label={tab} key={index} {...a11yProps(index)} className="font-semibold text-xl" />)}
 
                 </Tabs>
             </Box>
