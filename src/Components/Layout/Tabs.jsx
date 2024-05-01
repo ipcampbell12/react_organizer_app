@@ -48,14 +48,14 @@ function a11yProps(index) {
 export default function BasicTabs({ onTab, getTasks, tabState }) {
     const [value, setValue] = useState(0);
 
-    console.log("tab state in Tabs is: ", tabState)
+    // console.log("tab state in Tabs is: ", tabState)
     useEffect(() => {
         getTasks()
     }, [tabState])
 
     const handleChange = (event, newValue) => {
         onTab(tabNames[newValue]);
-        setValue(newValue)
+        setValue(newValue);
     };
 
     return (

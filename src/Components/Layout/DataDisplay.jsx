@@ -6,7 +6,7 @@ import CardComponent from '../UI/CardComponent';
 function DataDisplay({ tasks, setTasks, tabState, getTasks }) {
 
 
-    console.log("tab state in DataDisplay is: ", tabState)
+    // console.log("tab state in DataDisplay is: ", tabState)
     useEffect(() => {
         getTasks()
     }, [tabState])

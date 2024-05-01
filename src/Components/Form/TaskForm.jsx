@@ -24,7 +24,7 @@ const style = {
 };
 
 
-export default function TaskForm({ show, handleClose, setTasks, tasks }) {
+export default function TaskForm({ show, handleClose, setTasks, tasks, getTasks }) {
 
     //States
     const [workHome, setWorkhome] = useState('');
@@ -63,11 +63,12 @@ export default function TaskForm({ show, handleClose, setTasks, tasks }) {
 
     const onSubmit = async (e) => {
         e.preventDefault();
-        console.log("Data passed to form:", formData)
+        //console.log("Data passed to form:", formData)
         try {
             const response = await axios.post(`${API_URL}/api/tasks`, formData);
             console.log("Task created:", response.data);
-            setTasks([...tasks, response.data])
+            setTasks([...tasks, response.data]);
+            getTasks()
         } catch (error) {
             console.error("Error creating task:", error);
         }

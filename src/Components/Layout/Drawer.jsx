@@ -95,7 +95,7 @@ export default function PersistentDrawerLeft() {
     async function getTasks() {
         try {
             const response = await axios.get(`${API_URL}/api/tasks`)
-            console.log(response)
+            console.log("the getTasks() function is running")
             //have to use response.data
             setTasks(response.data)
         } catch (error) {
@@ -169,7 +169,7 @@ export default function PersistentDrawerLeft() {
                     <SearchComponent />
                 </Toolbar>
             </AppBar>
-            <TaskForm handleClose={handleModalClose} show={modalShow} setTasks={setTasks} tasks={tasks} />
+            <TaskForm handleClose={handleModalClose} show={modalShow} setTasks={setTasks} tasks={tasks} getTasks={getTasks} />
 
             <Drawer
                 sx={{

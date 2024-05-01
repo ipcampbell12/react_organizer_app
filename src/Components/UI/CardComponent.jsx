@@ -41,6 +41,6 @@ export default function CardComponent({ task }) {
                 </Box>
 
             </CardContent>
-        </Card >
+        </Card>
     );
 }
